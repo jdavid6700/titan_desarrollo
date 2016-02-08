@@ -1,20 +1,14 @@
-<?php
-
+<?php 
 namespace bloquesConcepto\contenidoConcepto\formulario;
-
 if(!isset($GLOBALS["autorizado"])) {
 	include("../index.php");
 	exit;
 }
-
 class Formulario {
-	
     var $miConfigurador;
     var $lenguaje;
     var $miFormulario;
-    
     function __construct($lenguaje, $formulario, $sql) {
-    	
         $this->miConfigurador = \Configurador::singleton ();
         $this->miConfigurador->fabricaConexiones->setRecursoDB ( 'principal' );
         $this->lenguaje = $lenguaje;
@@ -22,15 +16,12 @@ class Formulario {
         
         $this->miSql = $sql;
     }
-    
     function formulario() {
-    	
         /**
          * IMPORTANTE: Este formulario está utilizando jquery.
          * Por tanto en el archivo ready.php se delaran algunas funciones js
          * que lo complementan.
          */
-    	
         // Rescatar los datos de este bloque
         $directorio = $this->miConfigurador->getVariableConfiguracion ( "host" );
        $directorio .= $this->miConfigurador->getVariableConfiguracion ( "site" ) . "/index.php?";
@@ -43,7 +34,6 @@ class Formulario {
 		
        
         // ---------------- SECCION: Parámetros Globales del Formulario ----------------------------------
-        
         /**
         * Atributos que deben ser aplicados a todos los controles de este formulario.
         * Se utiliza un arreglo
@@ -52,7 +42,6 @@ class Formulario {
         * Si se utiliza esta técnica es necesario realizar un mezcla entre este arreglo y el específico en cada control:
         * $atributos= array_merge($atributos,$atributosGlobales);
         */
-        
         $atributosGlobales ['campoSeguro'] = 'true';
         $_REQUEST['tiempo']=time();
         
@@ -366,7 +355,37 @@ class Formulario {
 							
 					}
 					echo $this->miFormulario->marcoAgrupacion ( "fin" );
+                                        unset($esteCampo);
+                                        unset($atributos);
+                                        $esteCampo = "marcoDatosConceptos";
+					$atributos ["id"] = $esteCampo;
+                                        $atributos ["estilo"] = "jqueryui";
+                                        $atributos ["leyenda"] = "Operadores";
+                                        $atributos ['tipoEtiqueta'] = 'inicio';
+					echo $this->miFormulario->marcoAgrupacion ( "inicio", $atributos );
+					{
+						
+							
+						$atributos ["id"] = "botonesPanel2";
+					$atributos ["estilo"] = "col-md-8 btn-group btn-group-lg";
+					echo $this->miFormulario->division ( "inicio", $atributos );
+					{
+						echo "<input type=\"button\" id=\"btOper1C\" value=\"(\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper2C\" value=\")\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper3C\" value=\"+\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper4C\" value=\"-\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper5C\" value=\"*\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper6C\" value=\"÷\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper7C\" value=\"√\" class=\"btn btn-primary\"/>";
+						echo "<input type=\"button\" id=\"btOper8C\" value=\"^\" class=\"btn btn-primary\" />";
+                                                echo "<input type=\"button\" id=\"btOper9C\" value=\"&&\" class=\"btn btn-primary\" />";
+                                                echo "<input type=\"button\" id=\"btOper10C\" value=\"||\" class=\"btn btn-primary\" />";
+						echo "<input type=\"button\" id=\"btOper11C\" value=\"Borrar\" class=\"btn btn-danger\" />";
+					}
+					echo $this->miFormulario->division ( "fin" );
 					
+					}
+					echo $this->miFormulario->marcoAgrupacion ( "fin" );
 				}
 				echo $this->miFormulario->division ( "fin" );
 				
@@ -657,6 +676,7 @@ class Formulario {
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
         // --------------- FIN CONTROL : Cuadro de Texto --------------------------------------------------
         
+
         // ---------------- CONTROL: Cuadro de Texto --------------------------------------------------------
         $esteCampo = 'cantidadCondicionesConcepto';
         $atributos ['id'] = $esteCampo;

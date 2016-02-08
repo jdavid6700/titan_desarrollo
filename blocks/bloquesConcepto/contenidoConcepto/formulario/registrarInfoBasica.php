@@ -51,7 +51,9 @@ class Formulario {
         */
         $atributosGlobales ['campoSeguro'] = 'true';
   
-        
+        $_REQUEST['tiempo']=time();
+ 		$tiempo=$_REQUEST['tiempo'];
+
         $conexion = 'estructura';
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
         

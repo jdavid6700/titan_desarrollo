@@ -32,10 +32,10 @@
  $('#<?php echo $this->campoSeguro('categoriaConceptos')?>').width(250);
  $("#<?php echo $this->campoSeguro('categoriaConceptos')?>").select2();
  
- $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(260);
+ $('#<?php echo $this->campoSeguro('categoriaConceptosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").select2();
 
- $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(260);
+ $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").select2();
 
 $( '#<?php echo $this->campoSeguro('ley')?>' ).change(function() {
@@ -164,17 +164,17 @@ $( document ).ready(function() {
 			
 			$(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
 					'<legend class="ui-state-default ui-corner-all"> CONDICIÓN #'+iCnt+'</legend>'+
-					'<div>'+
-						'<div id=lab1'+iCnt+' class="col-md-2">'+
-							'<label> Si </label> ' + 
-						'</div>'+
-						'<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="' + cadenasSi[indice] + '" />'+
+					'<div id=lab1'+iCnt+' class="col-md-2">'+
+						'<label> Si </label> ' + 
 					'</div>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos('+iCnt+')"/>'+
+                                        '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt+' class="col-md-2">'+
 							'<label> Entonces </label> ' + 
 						'</div>'+
-						'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="' + cadenasEntonces[indice] + '" />'+
+					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt+')"/>'+
+                                        '</textarea>'+	
 					'</div>'+ 
 					'</fieldset>');
 			
@@ -184,14 +184,12 @@ $( document ).ready(function() {
 			
 			$('#sel2'+iCnt).width(120);
 			$('#sel2'+iCnt).select2();
-            
-            arrastreParametro('tb1' + iCnt);
-            arrastreParametro('tb2' + iCnt);
-            arrastreParametro('tb3' + iCnt);
-        
-            arrastreConcepto('tb1' + iCnt);
-            arrastreConcepto('tb2' + iCnt);
-            arrastreConcepto('tb3' + iCnt);
+                        
+                      arrastreParametro('tb1' + iCnt);
+                      arrastreParametro('tb2' + iCnt);
+	              
+                      arrastreConcepto('tb1' + iCnt);
+                      arrastreConcepto('tb2' + iCnt);
 
 	        indice++;
 	   
@@ -219,17 +217,17 @@ $(function () {
 			
 			$(container).append('<fieldset id=panel'+iCnt+' class="ui-widget ui-widget-content">'+
 					'<legend class="ui-state-default ui-corner-all"> CONDICIÓN #'+iCnt+'</legend>'+
-					'<div>'+
-						'<div id=lab1'+iCnt+' class="col-md-2">'+
-							'<label> Si </label> ' + 
-						'</div>'+
-						'<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" />'+
+					'<div id=lab1'+iCnt+' class="col-md-2">'+
+						'<label> Si </label> ' + 
 					'</div>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos('+iCnt+')"/>'+
+                                        '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt+' class="col-md-2">'+
 							'<label> Entonces </label> ' + 
 						'</div>'+
-						'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" />'+
+					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt+')"/>'+
+                                        '</textarea>'+	
 					'</div>'+ 
 					'</fieldset>');
 			
@@ -242,11 +240,9 @@ $(function () {
                         
                       arrastreParametro('tb1' + iCnt);
                       arrastreParametro('tb2' + iCnt);
-                      arrastreParametro('tb3' + iCnt);
 	              
                       arrastreConcepto('tb1' + iCnt);
                       arrastreConcepto('tb2' + iCnt);
-                      arrastreConcepto('tb3' + iCnt);
        
 		}
 		else { //alerta y deshabilitar boton de agregar por alcanzar el limite
@@ -300,11 +296,374 @@ $(function () {
         
         
 });
+function devPos(nombre){
+
+$("#btOper1C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+       	    var post = actual + "(";
+            $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper2C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + ")";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper3C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + "+";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper4C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+            var post = actual + "-";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+       });
+$("#btOper5C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+            var post = actual + "*";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper6C").on("click",function(){
+            var actual = $('#tb1'+nombre).val();
+	    var post = actual + "/";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper7C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "√";
+	   $('#tb1'+nombre).val(post);
+           $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });           
+$("#btOper8C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "^";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper9C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });    
+$("#btOper10C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb1'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper11C").on("click",function(){
+           $('#tb1'+nombre).val("");
+           $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+}
+       
+           
+function devPos2(nombre){
+
+$("#btOper1C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+       	    var post = actual + "(";
+            $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });  
+$("#btOper2C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + ")";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+       });  
+$("#btOper3C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + "+";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper4C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+            var post = actual + "-";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+       });
+$("#btOper5C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+            var post = actual + "*";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+        });
+$("#btOper6C").on("click",function(){
+            var actual = $('#tb2'+nombre).val();
+	    var post = actual + "/";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper7C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "√";
+	   $('#tb2'+nombre).val(post);
+           $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });           
+$("#btOper8C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "^";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper9C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });    
+$("#btOper10C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb2'+nombre).val(post);
+            $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });
+$("#btOper11C").on("click",function(){
+           $('#tb2'+nombre).val("");
+           $("#btOper1C").off("click");
+            $("#btOper2C").off("click");
+            $("#btOper3C").off("click");
+            $("#btOper4C").off("click");
+            $("#btOper5C").off("click");
+            $("#btOper6C").off("click");
+            $("#btOper7C").off("click");
+            $("#btOper8C").off("click");
+            $("#btOper9C").off("click");
+            $("#btOper10C").off("click");
+            $("#btOper11C").off("click");
+           });       
+} 
 //Funciones de arrastre apara dinamicos
 //
 //	 
 function arrastreParametro(nombre) {
-            
+            $('#'+nombre ).keypress(function(tecla) {
+	    if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
+	    tecla.charCode != 45 && tecla.charCode != 47 && 
+	    tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179) return false;
+           });
+         
+          
+
 	    $("#parametros").draggable({
 	        revert: true,
 	        helper: 'clone',
@@ -341,7 +700,7 @@ function arrastreConcepto(nombre) {
             this.value += $(ui.draggable).find('select option:selected').text();
         }
     });
-};
+};		
 	 
 // Funcion que Obtiene los valores de los textbox y los select
 var values = '', condiciones = '', cantidad = 0;
@@ -349,8 +708,9 @@ var values = '', condiciones = '', cantidad = 0;
 function GetTextValue() {
 	 
 	values = '';
-
+	 
 	var j = 0;
+	
 	while(j < iCnt){
 		j++;
 		values = values + $("#tb1"+j).val() + ',';
