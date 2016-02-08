@@ -349,11 +349,14 @@ var values = '', condiciones = '', cantidad = 0;
 function GetTextValue() {
 	 
 	values = '';
-	 
-	$('.input').each(function() {
-		values += this.value + ',';
-		$("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
-	});
+
+	var j = 0;
+	while(j < iCnt){
+		j++;
+		values = values + $("#tb1"+j).val() + ',';
+		values = values + $("#tb2"+j).val() + ',';
+	}
+	$("#<?php echo $this->campoSeguro('variablesRegistros') ?>").val(values);
 
 	condiciones = '';
 
