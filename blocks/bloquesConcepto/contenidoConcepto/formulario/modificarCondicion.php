@@ -201,9 +201,9 @@ class Formulario {
 							$atributos ['etiquetaObligatorio'] = false;
 							$atributos ['validar'] = '';
 								
-							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarRegistroxParametro");
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarCategoriaParametro");
 							$matrizParametros=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
-								
+					
 							$atributos['matrizItems'] = $matrizParametros;
 				
 							if (isset ( $_REQUEST [$esteCampo] )) {
@@ -301,7 +301,12 @@ class Formulario {
 							$atributos ['etiquetaObligatorio'] = false;
 							$atributos ['validar'] = '';
 								
-							$matrizItems=array(
+							$atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarCategoriaConcepto");
+							$matrizParametros=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+							
+							$atributos['matrizItems'] = $matrizParametros;
+							
+							/*$matrizItems=array(
 									array(1,'CP0001'),
 									array(2,'CP0002'),
 									array(3,'CP0003'),
@@ -309,7 +314,7 @@ class Formulario {
 									array(5,'CP0005')
 										
 							);
-							$atributos['matrizItems'] = $matrizItems;
+							$atributos['matrizItems'] = $matrizItems;*/
 								
 							if (isset ( $_REQUEST [$esteCampo] )) {
 								$atributos ['valor'] = $_REQUEST [$esteCampo];

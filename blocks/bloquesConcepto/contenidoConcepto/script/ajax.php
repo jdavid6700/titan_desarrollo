@@ -264,13 +264,13 @@ $( document ).ready(function() {
 					'<div id=lab1'+iCnt+' class="col-md-2">'+
 						'<label> Si </label> ' + 
 					'</div>'+
-                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos('+iCnt+')"/>'+
+                                        '<input type=text class="input" id=tb1' + iCnt + ' size="80"  maxlength="500" value="' + cadenasSi[indice] + '" onBlur="devPos('+iCnt+')"/>'+
                                         '<br/><br/>'+
 					'<div>'+
 						'<div id=lab2'+iCnt+' class="col-md-2">'+
 							'<label> Entonces </label> ' + 
 						'</div>'+
-					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="" onBlur="devPos2('+iCnt+')"/>'+
+					'<input type=text class="input" id=tb2' + iCnt + ' size="80"  maxlength="500" value="' + cadenasEntonces[indice] + '" onBlur="devPos2('+iCnt+')"/>'+
                                         '</textarea>'+	
 					'</div>'+ 
 					'</fieldset>');
