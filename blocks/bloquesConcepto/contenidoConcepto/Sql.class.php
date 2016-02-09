@@ -166,6 +166,24 @@ class Sql extends \Sql {
 				$cadenaSql .= 'id = ' . $variable . ';';
 				break;
 				
+			case 'buscarValorParametroAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'valor as VALOR ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.parametro_liquidacion ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+			
+			case 'buscarValorConceptoAjax' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'formula as FORMULA ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.concepto ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'codigo = ' . $variable . ';';
+				break;
+				
 			case 'buscarRegistrosDeConceptos' :
 				$cadenaSql = 'SELECT ';
 				$cadenaSql .= 'nombre as NOMBRE, ';

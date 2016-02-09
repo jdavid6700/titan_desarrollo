@@ -826,7 +826,7 @@ function GetTextValue() {
 
 
 
-function consultarParametro(elem, request, response){
+	function consultarParametro(elem, request, response){
 	  $.ajax({
 	    url: "<?php echo $urlFinal16?>",
 	    dataType: "json",
@@ -841,7 +841,7 @@ function consultarParametro(elem, request, response){
 	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('seccionParametros')?>");
 	            $.each(data , function(indice,valor){
 
-	            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionParametros')?>");
+	            	$("<option value='"+data[ indice ].id_categoria+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionParametros')?>");
 	            	
 	            });
 	            
@@ -876,7 +876,7 @@ function consultarParametro(elem, request, response){
 		            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('seccionConceptos')?>");
 		            $.each(data , function(indice,valor){
 
-		            	$("<option value='"+data[ indice ].codigo+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionConceptos')?>");
+		            	$("<option value='"+data[ indice ].id+"'>"+data[ indice ].simbolo+"</option>").appendTo("#<?php echo $this->campoSeguro('seccionConceptos')?>");
 		            	
 		            });
 		            
@@ -896,6 +896,49 @@ function consultarParametro(elem, request, response){
 		};
 
 
+		function consultarValorParametro(elem, request, response){
+			  $.ajax({
+			    url: "<?php echo $urlFinal17?>",
+			    dataType: "json",
+			    data: { valor:$("#<?php echo $this->campoSeguro('seccionParametros')?>").val()},
+			    success: function(data){ 
+
+
+
+			        if(data[0]!=" "){
+
+			            $("#<?php echo $this->campoSeguro('valorParametro')?>").val(data[0].valor);
+			            
+				    }
+			    			
+
+			    }
+				                    
+			   });
+			};
+
+
+			function consultarValorConcepto(elem, request, response){
+				  $.ajax({
+				    url: "<?php echo $urlFinal19?>",
+				    dataType: "json",
+				    data: { valor:$("#<?php echo $this->campoSeguro('seccionConceptos')?>").val()},
+				    success: function(data){ 
+
+
+
+				    	if(data[0]!=" "){
+
+				            $("#<?php echo $this->campoSeguro('valorConcepto')?>").val(data[0].formula);
+				            
+					    }
+				    			
+
+				    }
+					                    
+				   });
+				};
+
 		$("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").change(function(){
 
 		    
@@ -903,9 +946,10 @@ function consultarParametro(elem, request, response){
 		    	consultarParametro();
 			}else{
 				$("#<?php echo $this->campoSeguro('seccionParametros')?>").attr('disabled','');
-				}
+			}
+			$("#<?php echo $this->campoSeguro('valorParametro')?>").val('');
 
-		      });
+		});
 
 
 		$("#<?php echo $this->campoSeguro('categoriaConceptosList')?>").change(function(){
@@ -913,8 +957,30 @@ function consultarParametro(elem, request, response){
 		    	consultarConcepto();
 			}else{
 				$("#<?php echo $this->campoSeguro('seccionConceptos')?>").attr('disabled','');
-				}
+				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
+			}
 
-		      });
+		});
+
+
+		$("#<?php echo $this->campoSeguro('seccionParametros')?>").change(function(){
+
+			if($("#<?php echo $this->campoSeguro('seccionParametros')?>").val()!=''){
+		    	consultarValorParametro();
+			}else{
+				$("#<?php echo $this->campoSeguro('valorParametro')?>").val('');
+			}
+
+		});
+
+
+		$("#<?php echo $this->campoSeguro('seccionConceptos')?>").change(function(){
+			if($("#<?php echo $this->campoSeguro('seccionConceptos')?>").val()!=''){
+		    	consultarValorConcepto();
+			}else{
+				$("#<?php echo $this->campoSeguro('valorConcepto')?>").val('');
+			}
+
+		});
 
 </script>
