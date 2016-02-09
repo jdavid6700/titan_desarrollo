@@ -393,181 +393,108 @@ $(function () {
         
         
 });
+
 function devPos(nombre){
 
 $("#btOper1C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
        	    var post = actual + "(";
             $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+            desactivarClick();
         });
 $("#btOper2C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
 	    var post = actual + ")";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+            desactivarClick();
         });
 $("#btOper3C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
 	    var post = actual + "+";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
         });
 $("#btOper4C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
             var post = actual + "-";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+            desactivarClick();
        });
 $("#btOper5C").on("click",function(){
 	    var actual = $('#tb1'+nombre).val();
             var post = actual + "*";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+            desactivarClick();
         });
 $("#btOper6C").on("click",function(){
             var actual = $('#tb1'+nombre).val();
 	    var post = actual + "/";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });
 $("#btOper7C").on("click",function(){
 	    var actual = $('#tb1'+nombre).val();
 	    var post = actual + "√";
 	   $('#tb1'+nombre).val(post);
-           $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+          desactivarClick();
            });           
 $("#btOper8C").on("click",function(){
 	    var actual = $('#tb1'+nombre).val();
 	    var post = actual + "^";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });
 $("#btOper9C").on("click",function(){
 	    var actual = $('#tb1'+nombre).val();
-	    var post = actual + "&&";
+	    var post = actual + "<";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });    
 $("#btOper10C").on("click",function(){
 	    var actual = $('#tb1'+nombre).val();
-	    var post = actual + "||";
+	    var post = actual + "<=";
 	    $('#tb1'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });
 $("#btOper11C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + ">";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper12C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + ">=";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper13C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "=";
+	    $('#tb1'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper14C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "!=";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });
+$("#btOper15C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });  
+$("#btOper16C").on("click",function(){
+	    var actual = $('#tb1'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb1'+nombre).val(post);
+           desactivarClick();
+           });           
+$("#btOper17C").on("click",function(){
            $('#tb1'+nombre).val("");
-           $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+          desactivarClick();
            });
 }
        
@@ -578,185 +505,122 @@ $("#btOper1C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
        	    var post = actual + "(";
             $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-        });  
+            desactivarClick();
+           });
 $("#btOper2C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
 	    var post = actual + ")";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-       });  
+            desactivarClick();
+           }); 
 $("#btOper3C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
 	    var post = actual + "+";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-        });
+            desactivarClick();
+           });
 $("#btOper4C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
             var post = actual + "-";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-       });
+            desactivarClick();
+           });
 $("#btOper5C").on("click",function(){
 	    var actual = $('#tb2'+nombre).val();
             var post = actual + "*";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-        });
+           desactivarClick();
+           });
 $("#btOper6C").on("click",function(){
             var actual = $('#tb2'+nombre).val();
 	    var post = actual + "/";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });
 $("#btOper7C").on("click",function(){
 	    var actual = $('#tb2'+nombre).val();
 	    var post = actual + "√";
 	   $('#tb2'+nombre).val(post);
-           $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });           
 $("#btOper8C").on("click",function(){
 	    var actual = $('#tb2'+nombre).val();
 	    var post = actual + "^";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+            desactivarClick();
            });
 $("#btOper9C").on("click",function(){
 	    var actual = $('#tb2'+nombre).val();
-	    var post = actual + "&&";
+	    var post = actual + "<";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+           desactivarClick();
            });    
 $("#btOper10C").on("click",function(){
 	    var actual = $('#tb2'+nombre).val();
-	    var post = actual + "||";
+	    var post = actual + "<=";
 	    $('#tb2'+nombre).val(post);
-            $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
+         desactivarClick();
            });
 $("#btOper11C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + ">";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper12C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + ">=";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper13C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "=";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });
+$("#btOper14C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "!=";
+	    $('#tb2'+nombre).val(post);
+          desactivarClick();
+           });
+$("#btOper15C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "&&";
+	    $('#tb2'+nombre).val(post);
+           desactivarClick();
+           });  
+$("#btOper16C").on("click",function(){
+	    var actual = $('#tb2'+nombre).val();
+	    var post = actual + "||";
+	    $('#tb2'+nombre).val(post);
+            desactivarClick();
+           });           
+$("#btOper17C").on("click",function(){
            $('#tb2'+nombre).val("");
-           $("#btOper1C").off("click");
-            $("#btOper2C").off("click");
-            $("#btOper3C").off("click");
-            $("#btOper4C").off("click");
-            $("#btOper5C").off("click");
-            $("#btOper6C").off("click");
-            $("#btOper7C").off("click");
-            $("#btOper8C").off("click");
-            $("#btOper9C").off("click");
-            $("#btOper10C").off("click");
-            $("#btOper11C").off("click");
-           });       
+            desactivarClick();
+           });
 } 
 //Funciones de arrastre apara dinamicos
 //
-//	 
+//
+function desactivarClick() {
+     $("#btOper1C").off("click");$("#btOper2C").off("click");$("#btOper3C").off("click");$("#btOper4C").off("click");
+            $("#btOper5C").off("click"); $("#btOper6C").off("click");$("#btOper7C").off("click");$("#btOper8C").off("click");
+            $("#btOper9C").off("click");$("#btOper10C").off("click");$("#btOper11C").off("click");$("#btOper12C").off("click");
+            $("#btOper13C").off("click");$("#btOper14C").off("click");$("#btOper15C").off("click");$("#btOper16C").off("click");
+            $("#btOper17C").off("click");
+}
 function arrastreParametro(nombre) {
             $('#'+nombre ).keypress(function(tecla) {
 	    if(tecla.charCode != 0  && tecla.charCode != 42 && tecla.charCode != 43 && 
-	    tecla.charCode != 45 && tecla.charCode != 47 && 
-	    tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179) return false;
+	    tecla.charCode != 45 && tecla.charCode != 47 && tecla.charCode != 40 && tecla.charCode != 41 && tecla.charCode != 38 && tecla.charCode != 179 &&
+            tecla.charCode != 60 && tecla.charCode != 61 && tecla.charCode != 62 && tecla.charCode != 33 &&
+            tecla.charCode != 48 && tecla.charCode != 49 && tecla.charCode != 50 && tecla.charCode != 51 &&
+            tecla.charCode != 52 && tecla.charCode != 53 && tecla.charCode != 54 && tecla.charCode != 55 &&
+            tecla.charCode != 56 && tecla.charCode != 57
+            ) return false;
            });
          
           
@@ -797,7 +661,7 @@ function arrastreConcepto(nombre) {
             this.value += $(ui.draggable).find('select option:selected').text();
         }
     });
-};		
+};	
 	 
 // Funcion que Obtiene los valores de los textbox y los select
 var values = '', condiciones = '', cantidad = 0;
