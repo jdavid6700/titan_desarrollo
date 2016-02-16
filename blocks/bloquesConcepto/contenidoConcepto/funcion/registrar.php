@@ -42,58 +42,65 @@ class FormProcessor {
         $_entradaFormulaCompilador = $_REQUEST['formulaConcepto'];
         
         
-        var_dump(Interprete::evaluarSentencia($_entradaFormulaCompilador));
-        exit;
+        $_resultadoInterprete = Interprete::evaluarSentencia($_entradaFormulaCompilador); 
         
         
-        
-        
-        
-        //----------------------------------------------------------------------------------------------------------
-        //------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------
-        
-        if(isset($_REQUEST['naturalezaInfoConcepto'])){
-        	switch($_REQUEST['naturalezaInfoConcepto']){
-        		case 1 :
-        			$_REQUEST['naturalezaInfoConcepto']='Devenga';
-        			break;
-        		case 2 :
-        			$_REQUEST['naturalezaInfoConcepto']='Deduce';
-        			break;
-        	}
-        }
-        
-        $datosConcepto = array (
-        		'nombre' => $_REQUEST['nombreInfoConcepto'],
-        		'simbolo' => $_REQUEST['simboloInfoConcepto'],
-        		'categoria' => $_REQUEST['categoriaInfoConcepto'],
-        		'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
-        		'descripcion' => $_REQUEST['descripcionInfoConcepto'],
-        		'formula' => $_REQUEST['formulaConcepto']
-        );
-        
-        $cadenaSql = $this->miSql->getCadenaSql("insertarConcepto",$datosConcepto);
-        $id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosConcepto, "insertarConcepto");
-        
-        $arrayLeyes = explode(",", $_REQUEST['leyRegistrosInfoConcepto']);
-        $count = 0;
-        
-        while($count < count($arrayLeyes)){
+        if($_resultadoInterprete == "true"){
+        	//Ejecutar sentencias de almacenamiento si ha sido validada la sintaxis de la formula
         	
-        	$datosLeyesConcepto = array(
-        			'fk_id_ley' => $arrayLeyes[$count],
-        			'fk_concepto' => $id_concepto[0][0]
+        	//----------------------------------------------------------------------------------------------------------
+        	//------------------------ Codigo A Ejecutar Una Vez VALIDADA la Formula -----------------------------------
+        	
+        	if(isset($_REQUEST['naturalezaInfoConcepto'])){
+        		switch($_REQUEST['naturalezaInfoConcepto']){
+        			case 1 :
+        				$_REQUEST['naturalezaInfoConcepto']='Devenga';
+        				break;
+        			case 2 :
+        				$_REQUEST['naturalezaInfoConcepto']='Deduce';
+        				break;
+        		}
+        	}
+        	
+        	$datosConcepto = array (
+        			'nombre' => $_REQUEST['nombreInfoConcepto'],
+        			'simbolo' => $_REQUEST['simboloInfoConcepto'],
+        			'categoria' => $_REQUEST['categoriaInfoConcepto'],
+        			'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
+        			'descripcion' => $_REQUEST['descripcionInfoConcepto'],
+        			'formula' => $_REQUEST['formulaConcepto']
         	);
         	
-        	$cadenaSql = $this->miSql->getCadenaSql("insertarLeyesConcepto",$datosLeyesConcepto);
-        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
+        	$cadenaSql = $this->miSql->getCadenaSql("insertarConcepto",$datosConcepto);
+        	$id_concepto = $primerRecursoDB->ejecutarAcceso($cadenaSql, "busqueda", $datosConcepto, "insertarConcepto");
         	
-        	$count++;
-        
+        	$arrayLeyes = explode(",", $_REQUEST['leyRegistrosInfoConcepto']);
+        	$count = 0;
+        	
+        	while($count < count($arrayLeyes)){
+        		 
+        		$datosLeyesConcepto = array(
+        				'fk_id_ley' => $arrayLeyes[$count],
+        				'fk_concepto' => $id_concepto[0][0]
+        		);
+        		 
+        		$cadenaSql = $this->miSql->getCadenaSql("insertarLeyesConcepto",$datosLeyesConcepto);
+        		$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
+        		 
+        		$count++;
+        	
+        	}
+        	
+        	//---------------------------------------------------------------------------------------------------------
+        	//---------------------------------------------------------------------------------------------------------
+
+        	//*********************************************************************************
+        }else{
+        	Redireccionador::redireccionar('noInserto',$_resultadoInterprete);
+        	exit();
         }
         
-        //---------------------------------------------------------------------------------------------------------
-        //---------------------------------------------------------------------------------------------------------
+        
         
         
         
@@ -131,24 +138,32 @@ class FormProcessor {
         	
         	$_entradaCondicionCompilador = $arrayCondiciones[$count];
         	
+        	$_resultadoInterprete = Interprete::evaluarSentencia($_entradaCondicionCompilador);
         	
-        	
-        	
-        	
-        	
-        	//----------------------------------------------------------------------------------------------------------
-        	//------------------------ Codigo A Ejecutar Una Vez VALIDADA la Condicion -----------------------------------
-        	   
-        	$datosCondicion = array(
-        			'cadena' => $arrayCondiciones[$count],
-        			'fk_concepto' => $id_concepto[0][0]
-        	);
-        	
-        	$cadenaSql = $this->miSql->getCadenaSql("insertarCondicion",$datosCondicion);
-        	$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
-        	
-        	//-------------------------------------------------------------------------------------------------------
-
+        	if($_resultadoInterprete == "true"){
+        		
+        		//Ejecutar sentencias de almacenamiento si ha sido validada la sintaxis de la condicion
+        		
+        		//----------------------------------------------------------------------------------------------------------
+        		//------------------------ Codigo A Ejecutar Una Vez VALIDADA la Condicion -----------------------------------
+        		
+        		$datosCondicion = array(
+        				'cadena' => $arrayCondiciones[$count],
+        				'fk_concepto' => $id_concepto[0][0]
+        		);
+        		 
+        		$cadenaSql = $this->miSql->getCadenaSql("insertarCondicion",$datosCondicion);
+        		$primerRecursoDB->ejecutarAcceso($cadenaSql, "acceso");//********************************
+        		 
+        		//-------------------------------------------------------------------------------------------------------
+        		
+        		
+        	}else{
+        		
+        		Redireccionador::redireccionar('noInserto',$_resultadoInterprete);
+        		exit();
+        		
+        	}
         	$count++;
         }
         
