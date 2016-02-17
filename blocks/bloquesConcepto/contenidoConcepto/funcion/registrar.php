@@ -96,7 +96,19 @@ class FormProcessor {
 
         	//*********************************************************************************
         }else{
-        	Redireccionador::redireccionar('noInserto',$_resultadoInterprete);
+        	
+        	$datosConcepto = array (
+        			'nombre' => $_REQUEST['nombreInfoConcepto'],
+        			'simbolo' => $_REQUEST['simboloInfoConcepto'],
+        			'categoria' => $_REQUEST['categoriaInfoConcepto'],
+        			'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
+        			'descripcion' => $_REQUEST['descripcionInfoConcepto'],
+        			'formula' => $_REQUEST['formulaConcepto'],
+        			'error' => $_resultadoInterprete,
+        			'refError' => "En el Campo Fórmula, "
+        	);
+        	
+        	Redireccionador::redireccionar('noInserto',$datosConcepto);
         	exit();
         }
         
@@ -159,8 +171,19 @@ class FormProcessor {
         		
         		
         	}else{
-        		
-        		Redireccionador::redireccionar('noInserto',$_resultadoInterprete);
+        		$ident = $count + 1;
+        		$datosConcepto = array (
+        			'nombre' => $_REQUEST['nombreInfoConcepto'],
+        			'simbolo' => $_REQUEST['simboloInfoConcepto'],
+        			'categoria' => $_REQUEST['categoriaInfoConcepto'],
+        			'naturaleza' => $_REQUEST['naturalezaInfoConcepto'],
+        			'descripcion' => $_REQUEST['descripcionInfoConcepto'],
+        			'formula' => $_REQUEST['formulaConcepto'],
+        			'error' => $_resultadoInterprete,
+        			'refError' => "En la Condición #".$ident.", "
+        		);
+        	
+        		Redireccionador::redireccionar('noInserto',$datosConcepto);
         		exit();
         		
         	}
