@@ -134,6 +134,9 @@ $urlFinal19 = $url . $cadena19;
 
  $('#<?php echo $this->campoSeguro('categoriaParametrosList')?>').width(240);
  $("#<?php echo $this->campoSeguro('categoriaParametrosList')?>").select2();
+ 
+ $('#<?php echo $this->campoSeguro('VariablesList')?>').width(240);
+ $("#<?php echo $this->campoSeguro('VariablesList')?>").select2();
 
 $( '#<?php echo $this->campoSeguro('ley')?>' ).change(function() {
 		$("#<?php echo $this->campoSeguro('leyRegistros') ?>").val($("#<?php echo $this->campoSeguro('ley') ?>").val());
@@ -183,6 +186,25 @@ $(function () {
         }
     });
 
+    $('#<?php echo $this->campoSeguro('formula')?>').droppable({
+        hoverClass: 'active',
+        drop: function (event, ui) {
+            this.value += $(ui.draggable).find('select option:selected').text();
+        }
+    });
+});
+
+$(function () {
+    $("#variables_lista").draggable({
+        revert: true,
+        helper: 'clone',
+        start: function (event, ui) {
+            $(this).fadeTo('fast', 1.5);
+        },
+        stop: function (event, ui) {
+            $(this).fadeTo(0, 1);
+        }
+    });
     $('#<?php echo $this->campoSeguro('formula')?>').droppable({
         hoverClass: 'active',
         drop: function (event, ui) {

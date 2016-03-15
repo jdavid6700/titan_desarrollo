@@ -4,6 +4,7 @@ namespace bloquesConcepto\contenidoConcepto\funcion;
 
 
 include_once('Redireccionador.php');
+include_once('Interprete.php');
 
 class FormProcessor {
     

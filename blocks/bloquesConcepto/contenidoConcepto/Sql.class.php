@@ -1,22 +1,15 @@
 <?php
-
 namespace bloquesConcepto\contenidoConcepto;
-
 if (! isset ( $GLOBALS ["autorizado"] )) {
     include ("../index.php");
     exit ();
 }
-
 include_once ("core/manager/Configurador.class.php");
 include_once ("core/connection/Sql.class.php");
-
 /**
  * IMPORTANTE: Se recomienda que no se borren registros. Utilizar mecanismos para - independiente del motor de bases de datos,
  * poder realizar rollbacks gestionados por el aplicativo.
  */
-
-
-
 class Sql extends \Sql {
     
     var $miConfigurador;
@@ -244,7 +237,13 @@ class Sql extends \Sql {
 				$cadenaSql .= 'simbolo = ';
 				$cadenaSql .= '\'' . $variable ['simbolo'] . '\'';
 				break;
-				
+			case 'buscarVariables' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID, ';
+				$cadenaSql .= 'simbolo as SIMBOLO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'concepto.variable ';
+				break;	
 			case 'modificarConcepto' :
 				$cadenaSql = 'UPDATE ';
 				$cadenaSql .= 'concepto.concepto ';

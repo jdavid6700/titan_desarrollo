@@ -539,6 +539,75 @@ class Formulario {
 				echo $this->miFormulario->marcoAgrupacion ( "fin" );
 				
 				
+				unset($atributos);
+                                
+                $esteCampo = "marcoDatosVariables";
+				$atributos ['id'] = $esteCampo;
+				$atributos ["estilo"] = "jqueryui";
+				$atributos ['tipoEtiqueta'] = 'inicio';
+				$atributos ["leyenda"] = "Panel Variables";
+				echo $this->miFormulario->marcoAgrupacion ( 'inicio', $atributos );
+				{
+				
+				$atributos ["id"] = "variables_lista";
+				$atributos ["estilo"] = "col-md-12";
+				echo $this->miFormulario->division ( "inicio", $atributos );
+				{
+					// ---------------- CONTROL: Select --------------------------------------------------------
+					$esteCampo = 'VariablesList';
+					$atributos['nombre'] = $esteCampo;
+					$atributos['id'] = $esteCampo;
+					$atributos['etiqueta'] = $this->lenguaje->getCadena ( $esteCampo );
+					$atributos ['anchoEtiqueta'] = 230;
+					$atributos['tab'] = $tab;
+					$atributos['seleccion'] = -1;
+					$atributos['evento'] = ' ';
+					$atributos['deshabilitado'] = false;
+					$atributos['limitar']= 50;
+					$atributos['tamanno']= 1;
+					$atributos['columnas']= 1;
+				
+					$atributos ['obligatorio'] = false;
+					$atributos ['etiquetaObligatorio'] = false;
+					$atributos ['validar'] = '';
+					
+					$atributos ['cadena_sql'] = $this->miSql->getCadenaSql("buscarVariables");
+					$matrizParametros=$primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "busqueda");
+					
+					$atributos['matrizItems'] = $matrizParametros;
+				
+// 					$matrizItems=array(
+// 							array(1,'SMLV'),
+// 							array(2,'IVA'),
+// 							array(3,'RTF'),
+// 							array(4,'HED'),
+// 							array(5,'HEN')
+				
+// 					);
+// 					$atributos['matrizItems'] = $matrizItems;
+				
+					if (isset ( $_REQUEST [$esteCampo] )) {
+						$atributos ['valor'] = $_REQUEST [$esteCampo];
+					} else {
+						$atributos ['valor'] = '';
+					}
+					$atributos ["titulo"] = $this->lenguaje->getCadena ( $esteCampo . 'Titulo' );
+					$tab ++;
+				
+					// Aplica atributos globales al control
+					$atributos = array_merge ( $atributos, $atributosGlobales );
+					echo $this->miFormulario->campoCuadroLista ( $atributos );
+					// --------------- FIN CONTROL : Select --------------------------------------------------
+				}
+				echo $this->miFormulario->division ( "fin" );
+				
+				unset($atributos);
+				
+				
+				}
+				echo $this->miFormulario->marcoAgrupacion ( "fin" );
+				
+
 				//***********************************************************************************************
 				//***********************************************************************************************
 				
