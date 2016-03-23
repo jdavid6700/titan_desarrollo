@@ -109,6 +109,17 @@ class Sql extends \Sql {
 				$cadenaSql .= 'estado != \'Inactivo\';';
 				break;
 				
+			case 'buscarLeyXConcepto' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ley_decreto_norma ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id_ldn = ' . $variable .' ';
+				$cadenaSql .= 'AND estado != \'Inactivo\';';
+				break;
+				
 			case 'buscarCategoria' :
 				$cadenaSql = 'SELECT ';
 				$cadenaSql .= 'id as ID, ';
@@ -146,7 +157,8 @@ class Sql extends \Sql {
 				$cadenaSql .= 'FROM ';
 				$cadenaSql .= 'parametro.parametro_liquidacion ';
 				$cadenaSql .= 'WHERE ';
-				$cadenaSql .= 'id_categoria = ' . $variable . ';';
+				$cadenaSql .= 'id_categoria = ' . $variable .' ';
+				$cadenaSql .= 'AND estado != \'Inactivo\';';
 				break;
 				
 			case 'buscarConceptoAjax' :
@@ -156,7 +168,8 @@ class Sql extends \Sql {
 				$cadenaSql .= 'FROM ';
 				$cadenaSql .= 'concepto.concepto ';
 				$cadenaSql .= 'WHERE ';
-				$cadenaSql .= 'id = ' . $variable . ';';
+				$cadenaSql .= 'id = ' . $variable .' ';
+				$cadenaSql .= 'AND estado != \'Inactivo\';';
 				break;
 				
 			case 'buscarValorParametroAjax' :
