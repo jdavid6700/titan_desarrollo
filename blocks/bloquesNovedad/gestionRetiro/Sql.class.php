@@ -242,23 +242,22 @@ class Sql extends \Sql {
                 //$cadenaSql .= 'nombre=\'' . $_REQUEST ['nombrePagina'] . '\' ';
                 break;
                 
-             case 'buscarRegistroxCargo' :
-                
-                	$cadenaSql = 'SELECT ';
-                        $cadenaSql .= 'codigo_cargo as COD_CARGO, ';
-                        $cadenaSql .= 'nivel as NIVEL, ';
-                        $cadenaSql .= 'codigo_alternativo as COD_ALTERNATIVO,';
-                        $cadenaSql .= 'grado as GRADO,';
-                        $cadenaSql .= 'nombre as NOMBRE,';
-                        $cadenaSql .= 'cod_tipo_cargo as COD_TIPO, ';
-                        $cadenaSql .= 'estado as ESTADO ';
-                        $cadenaSql .= 'FROM ';
-                        $cadenaSql .= 'parametro.cargo';
-//                        $cadenaSql .= 'WHERE ';
-//                        $cadenaSql .= 'nombre=\'' . $_REQUEST ['usuario']  . '\' AND ';
-//                        $cadenaSql .= 'clave=\'' . $claveEncriptada . '\' ';
-                        
-                break;
+			case 'buscarRegistroxVinculacion' :
+				
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'documento as ID, ';
+				$cadenaSql .= 'estado_vinculacion as ESTADO, ';
+				$cadenaSql .= 'fecha_inicio as FECHA_IN,';
+				$cadenaSql .= 'id_tipo_vinculacion as TIPO_VINCULO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'persona.vinculacion_persona_natural ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= "estado_vinculacion != 'Inactivo' ";
+				if ($variable != null) {
+					$cadenaSql .= 'AND id_tipo_vinculacion = ' . $variable . ';';
+				}
+				
+				break;
                 	
                 case 'buscarRegistroUsuarioWhere' :
                 		$cadenaSql = 'SELECT ';
