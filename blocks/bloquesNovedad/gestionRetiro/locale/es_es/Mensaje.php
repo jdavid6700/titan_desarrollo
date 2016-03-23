@@ -2,7 +2,10 @@
 $this->idioma["bloqueContenido"]="Cargo";
 $this->idioma["noDefinido"]="No definido";
 
-$this->idioma["botonRegistrar"]="Registrar ";
+$this->idioma["botonRegistrarRetiros"]="Registrar Retiros";
+$this->idioma["botonCancelarRetiros"]="Cancelar";
+
+$this->idioma["botonBuscar"]="Buscar Empleados ";
 $this->idioma["botonGuardar"]="Aceptar";
 $this->idioma["botonModificar"]="Modificar";
 $this->idioma["botonInactivar"]="Inactivar";
@@ -12,16 +15,17 @@ $this->idioma["enviarInactivar"]="Aceptar";
 $this->idioma["regresar"]="Regresar";
 $this->idioma["modificar"]="Modificar ";
 
-//REGISTRO
-$this->idioma["nit"]="Nit: " ;
-$this->idioma["nitTitulo"]="Nit " ;
-$this->idioma["nombre"]="Nombre: ";
+//REGISTRO BUSCAR
+$this->idioma["tipoVinculacion"]="Tipo de Vinculación: " ;
+$this->idioma["tipoVinculacionTitulo"]="Filtrar por Tipo de Vinculación " ;
+$this->idioma["sedeBuscar"]="Sede: ";
+$this->idioma["sedeBuscarTitulo"]="Filtrar por Sede ";
+$this->idioma["dependenciaBuscar"]="Dependencia: ";
+$this->idioma["dependenciaBuscarTitulo"]="Filtrar por Dependencia ";
+$this->idioma["ubicacionBuscar"]="Ubicacion Especifica: ";
+$this->idioma["ubicacionBuscarTitulo"]="Filtrar por Ubicación Especifica ";
 
-$this->idioma["nombreTitulo"]="Nombre ";
-$this->idioma["direccion"]="Direccion: ";
-$this->idioma["direccionTitulo"]="Direccion: ";
-$this->idioma["telefono"]="Telefono: ";
-$this->idioma["telefonoTitulo"]="Telefono ";
+
 $this->idioma["extencionTelefono"]="Extension tel:";
 $this->idioma["extencionTelefonoTitulo"]="Extension tel:";
 $this->idioma["fax"]="Fax: ";

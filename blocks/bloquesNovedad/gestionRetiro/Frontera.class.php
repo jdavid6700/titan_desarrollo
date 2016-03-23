@@ -46,41 +46,49 @@ class Frontera {
        
 
 		
-        if(isset($_REQUEST['opcion'])){
-                          
-                           switch ($_REQUEST ['opcion']) {
+        if (isset ( $_REQUEST ['opcion'] )) {
+			
+			switch ($_REQUEST ['opcion']) {
 				
 				case "registrar" :
-                                    
+					
 					include_once ($this->ruta . "/formulario/registrar.php");
 					break;
 				case "mensaje" :
-                                   
+					
 					include_once ($this->ruta . "/formulario/mensaje.php");
 					break;
-				case "modificar":
-					include_once($this->ruta."/formulario/modificar.php");
-					break;	
-                               
-                                case "form":
-                                   
+				case "modificar" :
+					include_once ($this->ruta . "/formulario/modificar.php");
+					break;
+				
+				case "form" :
 					include_once ($this->ruta . "/formulario/form.php");
 					break;
-                                 
-                                 case "inactivar":
+				
+				case "inactivar" :
 					include_once ($this->ruta . "/formulario/inactivar.php");
-					break;	 
-                                    
-                                case "detalle":
-					include_once ($this->ruta . "/formulario/detalle.php");
-					break;	
-                                    
-                                     case "verdetalle":
-                                        include_once ($this->ruta . "/formulario/verDetalle.php");
 					break;
-        		}
-		}else{
-                    
+				
+				case "detalle" :
+					include_once ($this->ruta . "/formulario/detalle.php");
+					break;
+				
+				case "verdetalle" :
+					include_once ($this->ruta . "/formulario/verDetalle.php");
+					break;
+					
+				case "opcForm" :
+					if($_REQUEST["botonBuscar"] == 'true'){
+						include_once ($this->ruta . "/formulario/registrarRetiros.php");
+					}else{
+						include_once ($this->ruta . "/formulario/form.php");
+					}
+					
+					break;
+			}
+		} else {
+			
 			include_once ($this->ruta . "/formulario/form.php");
 		}
 	}

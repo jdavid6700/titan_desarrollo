@@ -1,9 +1,11 @@
 <?php 
-namespace bloquesParametro\cajaDeCompensacion\formulario;
+namespace bloquesNovedad\gestionRetiro\formulario;
+
 if(!isset($GLOBALS["autorizado"])) {
 	include("../index.php");
 	exit;
 }
+
 class Formulario {
     var $miConfigurador;
     var $lenguaje;

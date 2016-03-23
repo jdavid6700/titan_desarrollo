@@ -1,6 +1,6 @@
 
 
-$("#cajaDeCompensacion").validationEngine({
+$("#gestionRetiro").validationEngine({
 	promptPosition : "centerRight",
 	scroll: false,
 	autoHidePrompt: true,
@@ -14,8 +14,5 @@ $('#datepicker').datepicker({
 	autoHidePrompt: true
 });
 
-$('#<?php echo $this->campoSeguro('fdpDepartamento')?>').width(250); 
-$("#<?php echo $this->campoSeguro('fdpDepartamento')?>").select2();
-
-$('#<?php echo $this->campoSeguro('fdpCiudad')?>').width(250); 
-$("#<?php echo $this->campoSeguro('fdpCiudad')?>").select2();
+$('#<?php echo $this->campoSeguro('tipoVinculacion')?>').width(250); 
+$("#<?php echo $this->campoSeguro('tipoVinculacion')?>").select2();

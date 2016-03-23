@@ -92,22 +92,15 @@ class Sql extends \Sql {
                 $cadenaSql .= 'nit = ';
                 $cadenaSql .= $variable ['nit']  .';';
                 break;
-        case 'buscarCajaDeCompensacion1':
-                $cadenaSql = 'SELECT ';
-                $cadenaSql .= 'nit as NIT, ';
-                $cadenaSql .= 'nombre as NOMBRE, ';
-                $cadenaSql .= 'direccion as DIRECCION, ';
-                $cadenaSql .= 'telefono as TELEFONO, ';
-                $cadenaSql .= 'extencion_telefono as EXTENCION_TELEFONO, ';
-                $cadenaSql .= 'fax as FAX, ';
-                $cadenaSql .= 'extencion_fax as EXTENCION_FAX, ';
-                $cadenaSql .= 'lugar as LUGAR, ';
-                $cadenaSql .= 'nombre_representante_legal as NOMBRE_REPRESENTANTE_LEGAL, ';
-                $cadenaSql .= 'email as EMAIL, ';
-                $cadenaSql .= 'estado as ESTADO ';
-                $cadenaSql .= 'FROM ';
-                $cadenaSql .= 'parametro.caja_compensacion';
-                break;
+        case 'buscarTipoVinculacion' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.tipo_vinculacion ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'estado != \'Inactivo\';';
+				break;
         case 'inactivarRegistro' :
                 $cadenaSql = 'UPDATE ';
                 $cadenaSql .= 'parametro.caja_compensacion ';

@@ -1,4 +1,6 @@
    <?php
+   
+   namespace bloquesNovedad\gestionRetiro\formulario;
 
 if (! isset ( $GLOBALS ["autorizado"] )) {
 	include ("../index.php");
