@@ -14,10 +14,10 @@ $estilo[$indice++]="jquery-ui.min.css";
 $estilo[$indice++]="jquery-ui.css";
 $estilo[$indice++]="timepicker.css";
 
-$estilo[$indice++]="bootstrap-theme.css";
-$estilo[$indice++]="bootstrap-theme.min.css";
-$estilo[$indice++]="bootstrap.css";
-$estilo[$indice++]="bootstrap.min.css";
+//$estilo[$indice++]="bootstrap-theme.css";
+//$estilo[$indice++]="bootstrap-theme.min.css";
+//$estilo[$indice++]="bootstrap.css";
+//$estilo[$indice++]="bootstrap.min.css";
 
 $estilo[$indice++]="jquery.auto-complete.css";
 $estilo[$indice++]="demo_page.css";

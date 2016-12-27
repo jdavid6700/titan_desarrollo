@@ -30,22 +30,41 @@ class FormProcessor {
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB ($conexion );
        
        
-    
+  
        $datos = array(
             'nombre' => $_REQUEST ['nombre'],
             'simbolo' => $_REQUEST ['simbolo'],
             'descripcion' => $_REQUEST ['descripcion'],
             'ley' => $_REQUEST ['ley'],
             'valor' => $_REQUEST ['valor'],
+            'categoria' => $_REQUEST ['categoria'],
            
         );
       
    $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("registrarParametroLiquidacion", $datos);
  
-    $resultado=  $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "acceso");
+    $resultado=    $id_concepto = $primerRecursoDB->ejecutarAcceso( $atributos ['cadena_sql'], "busqueda", $datos, "registrarParametroLiquidacion");
+   
         
+ $arrayLeyes = explode(",", $_REQUEST['leyRegistros']);
+        $count = 0;
+        
+        while($count < count($arrayLeyes)){
+        	
+        	$datosLeyesConcepto = array(
+        			'id_ley' => $arrayLeyes[$count],
+        			'concepto' => $resultado[0][0]
+        	);
+        	
+        	$atributos ['cadena_sql'] = $this->miSql->getCadenaSql("insertarLeyesParametro",$datosLeyesConcepto);
+        	
+                $resultado1=$primerRecursoDB->ejecutarAcceso($atributos ['cadena_sql'], "acceso");//********************************
+        	
  
-   if (!empty($resultado)) {
+        	$count++;
+        
+        }
+   if (!empty($resultado)&&!empty($resultado1)) {
             Redireccionador::redireccionar('inserto');
             exit();
         } else {

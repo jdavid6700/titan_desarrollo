@@ -65,7 +65,7 @@ class Formulario {
         $atributos ['titulo'] = false;//$this->lenguaje->getCadena ( $esteCampo );
         // Si no se coloca, entonces toma el valor predeterminado.
         $atributos ['estilo'] = '';
-        $atributos ['marco'] = true;
+        $atributos ['marco'] = false;
         $tab = 1;
         // ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
         // ----------------INICIAR EL FORMULARIO ------------------------------------------------------------
@@ -368,12 +368,13 @@ class Formulario {
                           <img src='" . $rutaBloque . "/css/images/modificar.png' width='25px'>
                           </a></center> </td>";
                          
-                         $variableACT = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );; // pendiente la pagina para modificar parametro
+                          $variableACT = "pagina=" . $this->miConfigurador->getVariableConfiguracion ( 'pagina' );; // pendiente la pagina para modificar parametro
                           $variableACT .= "&opcion=inactivar";
                           $variableACT .= "&bloque=" . $esteBloque ['nombre'];
                           $variableACT .="&tamaño=".$longitud;
                           $variableACT .= "&variable=" . $_REQUEST['variable'];
-                          $variableACT .= '&variablei=' . $var;
+                          $variableACT .= "&idNomina=" . $matriz[$var][0];
+                          $variableACT .= '&variablei=' . $matriz[$var]['estado'];
                           $variableACT .= "&vinculacion=".$vinculacion; 
                           $variableACT .= "&bloqueGrupo=" . $esteBloque ["grupo"];
                           $variableACT = $this->miConfigurador->fabricaConexiones->crypto->codificar_url ( $variableACT, $directorio );
@@ -429,7 +430,7 @@ class Formulario {
         $atributos ["tipo"] = "hidden";
         $atributos ['estilo'] = '';
         $atributos ["obligatorio"] = false;
-        $atributos ['marco'] = true;
+        $atributos ['marco'] = false;
         $atributos ["etiqueta"] = "";
         $atributos ["valor"] = $valorCodificado;
         echo $this->miFormulario->campoCuadroTexto ( $atributos );
@@ -438,7 +439,7 @@ class Formulario {
         // ---------------- FIN SECCION: Controles del Formulario -------------------------------------------
         // ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
         // Se debe declarar el mismo atributo de marco con que se inició el formulario.
-        $atributos ['marco'] = true;
+        $atributos ['marco'] = false;
         $atributos ['tipoEtiqueta'] = 'fin';
         echo $this->miFormulario->formulario ( $atributos );
         return true;

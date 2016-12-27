@@ -1,5 +1,5 @@
 <?php
-namespace bloquesModelo\bloqueContenido\formulario;
+namespace bloquesLiquidacion\tipoNomina\formulario;
 
 if(!isset($GLOBALS["autorizado"])) {
 	include("../index.php");
@@ -75,7 +75,7 @@ class Formulario {
 
 		// Si no se coloca, entonces toma el valor predeterminado.
 		$atributos ['estilo'] = '';
-		$atributos ['marco'] = true;
+		$atributos ['marco'] = false;
 		$tab = 1;
 		// ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
 

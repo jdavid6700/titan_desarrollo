@@ -24,7 +24,6 @@ class FormProcessor {
         $conexion = 'estructura';
         $primerRecursoDB = $this->miConfigurador->fabricaConexiones->getRecursoDB($conexion);
        
-       
         if($_REQUEST['enviarInactivar'] =='true'){
             if($_REQUEST ['estado']=='Inactivo'){
                       $opcion='Activo';
@@ -32,15 +31,14 @@ class FormProcessor {
         else{
             $opcion='Inactivo';
         }
-        
-            
+      
             $datos = array(
             'codigoRegistro' => $_REQUEST ['id'],
             'estadoRegistro' => $opcion       
         );
 //       
         $atributos ['cadena_sql'] = $this->miSql->getCadenaSql("inactivarRegistro",$datos);
-        
+      
         
         $primerRecursoDB->ejecutarAcceso($atributos['cadena_sql'], "acceso");
                

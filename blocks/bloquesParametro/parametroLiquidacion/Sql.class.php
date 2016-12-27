@@ -38,20 +38,39 @@ class Sql extends \Sql {
              * Clausulas específicas
              */
             
+            	
+			case 'buscarLeyXParametro' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ley_decreto_norma ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id_ldn = ' . $variable .' ';
+				$cadenaSql .= 'AND estado != \'Inactivo\';';
+				break;
+            case 'consultarLeyesParametro' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'id as CODIGO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ldnxparametro ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;
+				
             case 'buscarParametroLiquidacion':
                 $cadenaSql = 'SELECT ';
                 $cadenaSql .= 'b.nombre as NOMBRE, ';
                 $cadenaSql .= 'simbolo as SIMBOLO, ';
-                 $cadenaSql .= 'descripcion as DESCRIPCION   , ';
-                $cadenaSql .= 'a.nombre as LEY, ';
+                $cadenaSql .= 'descripcion as DESCRIPCION   , ';
+                $cadenaSql .= 'id_categoria as CATEGORIA   , ';
                 $cadenaSql .= 'valor as VALOR, ';
-                $cadenaSql .= 'b.estado as ESTADO ';
+                $cadenaSql .= 'b.estado as ESTADO, ';
+                $cadenaSql .= 'b.id as ID ';
                 $cadenaSql .= 'FROM ';
-                $cadenaSql .= 'parametro.parametro_liquidacion b, ';
-                $cadenaSql .= 'parametro.ley_decreto_norma a ';
-               $cadenaSql .= 'WHERE ';
-                $cadenaSql .= 'b.ley = ';
-                 $cadenaSql .= 'a.id_ldn  ';
+                $cadenaSql .= 'parametro.parametro_liquidacion b ';
+              
                 
                 break;
             case 'buscarParametroLiquidacion2':
@@ -126,14 +145,33 @@ class Sql extends \Sql {
                 $cadenaSql .= "'".$variable ['nombre'] . "',";
                 $cadenaSql .= 'descripcion = ';
                 $cadenaSql .= "'".$variable ['descripcion']  . "', ";
-               
-                if($variable ['ley']!='')
-                {
-                 $cadenaSql .= 'ley= '; 
-                 $cadenaSql .= "'".$variable ['ley'] . "',";   
-                 
-                }
+                $cadenaSql .= 'id_categoria = ';
+                $cadenaSql .= $variable ['categoria']  . ", ";
                 
+                $cadenaSql .= 'simbolo = ';
+                $cadenaSql .= "'".$variable ['simbolo']  . "', ";
+                
+               
+                $cadenaSql .= 'valor = ';
+                $cadenaSql .= $variable ['valor']  ;
+               
+                $cadenaSql .= ' WHERE ';
+                $cadenaSql .= 'id = ';
+                $cadenaSql .= $variable ['id']  .';';
+                break;
+            
+            case 'modificarRegistro1' :
+                $cadenaSql = 'UPDATE ';
+                $cadenaSql .= 'parametro.parametro_liquidacion ';
+                $cadenaSql .= 'SET ';
+                $cadenaSql .= 'nombre = ';
+                $cadenaSql .= "'".$variable ['nombre'] . "',";
+                $cadenaSql .= 'descripcion = ';
+                $cadenaSql .= "'".$variable ['descripcion']  . "', ";
+                $cadenaSql .= 'id_categoria = ';
+                $cadenaSql .= $variable ['categoria']  . ", ";
+                
+               
                
                 $cadenaSql .= 'valor = ';
                 $cadenaSql .= $variable ['valor']  ;
@@ -165,12 +203,13 @@ class Sql extends \Sql {
                 $cadenaSql .= 'simbolo,';
                 $cadenaSql .= 'descripcion,';
                
-               $cadenaSql .= 'ley,';
+               
                 
                
                 $cadenaSql .= 'valor,';
                 
-                $cadenaSql .= 'estado';
+                $cadenaSql .= 'estado,';
+                $cadenaSql .= 'id_categoria';
                 $cadenaSql .= ') ';
                 $cadenaSql .= 'VALUES ';
                 $cadenaSql .= '( ';
@@ -178,18 +217,21 @@ class Sql extends \Sql {
                 
                 $cadenaSql .= '\'' . $variable ['simbolo']  . '\', ';
                 $cadenaSql .= '\'' . $variable ['descripcion']  . '\', ';
-                $cadenaSql .= $variable ['ley'] . ', ';
+               
                 $cadenaSql .= $variable ['valor'] . ', ';
-                 
+                
+               
                
                 
              
                 
                
                
-                $cadenaSql .= '\'' . 'Activo' . '\' ';
+                $cadenaSql .= '\'' . 'Activo' . '\', ';
+                  $cadenaSql .= $variable ['categoria'] ;
+                
                 $cadenaSql .= ') ';
-		
+		 $cadenaSql .= "RETURNING  id; ";
 				break;  
             
             case 'insertarRegistro' :
@@ -321,7 +363,16 @@ class Sql extends \Sql {
 				$cadenaSql .= 'parametro.ley_decreto_norma ';
 				
 				break;
-               		
+       case 'buscarCategoria' :
+				
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_categoria as ID, ';
+				$cadenaSql .= 'nombre as NOMBRE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= ' parametro.categoria_parametro';
+				
+				break;
+               		        		
 			case 'buscarDepartamentoAjax' :
 				
 				$cadenaSql = 'SELECT ';
@@ -425,7 +476,40 @@ class Sql extends \Sql {
                 $cadenaSql .= $variable ['fdpCiudad'] . '';
                 $cadenaSql .= ') ';
 				break;  
+                             case 'insertarLeyesParametro' :
+				$cadenaSql = 'INSERT INTO ';
+				$cadenaSql .= 'parametro.ldnxparametro';
+				$cadenaSql .= '( ';
+				$cadenaSql .= 'id_ldn,';
+				$cadenaSql .= 'id';
+				$cadenaSql .= ') ';
+				$cadenaSql .= 'VALUES ';
+				$cadenaSql .= '( ';
+				$cadenaSql .= $variable ['id_ley'] . ', ';
+				$cadenaSql .= $variable ['concepto'];
+				$cadenaSql .= '); ';
+				break;
+                            
+                        case 'eliminarLeyesModificar' :
+				$cadenaSql = 'DELETE ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ldnxparametro ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable ['id_parametro'] . ';';
+				break;
+				    
+			case 'consultarLeyesParametros' :
+				$cadenaSql = 'SELECT ';
+				$cadenaSql .= 'id_ldn as ID, ';
+				$cadenaSql .= 'id as CODIGO ';
+				$cadenaSql .= 'FROM ';
+				$cadenaSql .= 'parametro.ldnxparametro ';
+				$cadenaSql .= 'WHERE ';
+				$cadenaSql .= 'id = ' . $variable . ';';
+				break;	
+                            
         }
+       
         
         return $cadenaSql;
     

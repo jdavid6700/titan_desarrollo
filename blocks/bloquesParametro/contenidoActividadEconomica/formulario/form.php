@@ -87,7 +87,7 @@ class Formulario {
 
         // Si no se coloca, entonces toma el valor predeterminado.
         $atributos ['estilo'] = '';
-        $atributos ['marco'] = true;
+        $atributos ['marco'] = false;
         $tab = 1;
         // ---------------- FIN SECCION: de Parámetros Generales del Formulario ----------------------------
 
@@ -157,7 +157,7 @@ class Formulario {
             
         
         echo '<table id="tablaReporteAE" class="display" cellspacing="0" width="100%"> '
-                 . '<thead><tr><th>'."CODIGO".'</th><th>'."NOMBRE".'</th> <th>'."ESTADO".'</th> <th>'."VER DETALLE".'</th> <th>'."MODIFICAR".'</th> <th>'."ACTIVAR".'</th></tr></thead>
+                 . '<thead><tr><th>'."CODIGO CIIU".'</th><th>'."NOMBRE".'</th> <th>'."ESTADO".'</th> <th>'."VER DETALLE".'</th> <th>'."MODIFICAR".'</th> <th>'."ACTIVAR".'</th></tr></thead>
  
                     <tbody>'; 
         if(!empty($matrizItems)){
@@ -281,7 +281,7 @@ class Formulario {
 
         // ----------------FINALIZAR EL FORMULARIO ----------------------------------------------------------
         // Se debe declarar el mismo atributo de marco con que se inició el formulario.
-        $atributos ['marco'] = true;
+        $atributos ['marco'] = false;
         $atributos ['tipoEtiqueta'] = 'fin';
         echo $this->miFormulario->formulario ( $atributos );
 

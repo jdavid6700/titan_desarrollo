@@ -87,6 +87,7 @@ function consultarDepartamento(elem, request, response){
 	    data: { valor:$("#<?php echo $this->campoSeguro('personaNaturalPais')?>").val()},
 	    success: function(data){ 
 	        if(data[0]!=" "){
+		        alert("wtre");
 	            $("#<?php echo $this->campoSeguro('personaNaturalDepartamento')?>").html('');
 	            $("<option value=''>Seleccione  ....</option>").appendTo("#<?php echo $this->campoSeguro('personaNaturalDepartamento')?>");
 	            $.each(data , function(indice,valor){
